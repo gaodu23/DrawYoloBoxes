@@ -4,8 +4,6 @@
 	xmlns:gx="http://www.google.com/kml/ext/2.2" 
 	>
 <Document>
-	<name>柏乡县</name>
-	<Folder>
 		<name>柏乡县</name>
 		<Folder>
 			<name>王家庄乡</name>
@@ -192,6 +190,5 @@
 					</Polygon>
 			</Placemark>
 		</Folder>
-	</Folder>
 </Document>
 </kml>

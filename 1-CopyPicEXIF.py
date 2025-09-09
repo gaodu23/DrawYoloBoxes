@@ -11,12 +11,12 @@ opt_file = r'D:\FLY\PicExifAdd\cameraInfo\4200-40.opt'
 def run_all_tasks():
     # 输入输出路径配对
     task_pairs = [
-        (r'D:\202509宁晋环境\0908\21', r'D:\yolo\XY-YOLO-Tools\train_data\0908\images'),
-        (r'D:\202509宁晋环境\0908\22', r'D:\yolo\XY-YOLO-Tools\train_data\0908\images'),
-        (r'D:\202509宁晋环境\0908\23', r'D:\yolo\XY-YOLO-Tools\train_data\0908\images'),
-        (r'D:\202509宁晋环境\0908\31', r'D:\yolo\XY-YOLO-Tools\train_data\0908\images'),
-        (r'D:\202509宁晋环境\0908\32', r'D:\yolo\XY-YOLO-Tools\train_data\0908\images'),
-        (r'D:\202509宁晋环境\0908\33', r'D:\yolo\XY-YOLO-Tools\train_data\0908\images'),
+        (r'D:\202509宁晋环境\0909\21', r'D:\yolo\XY-YOLO-Tools\train_data\0909\images'),
+        (r'D:\202509宁晋环境\0909\22', r'D:\yolo\XY-YOLO-Tools\train_data\0909\images'),
+        (r'D:\202509宁晋环境\0909\23', r'D:\yolo\XY-YOLO-Tools\train_data\0909\images'),
+        (r'D:\202509宁晋环境\0909\31', r'D:\yolo\XY-YOLO-Tools\train_data\0909\images'),
+        (r'D:\202509宁晋环境\0909\32', r'D:\yolo\XY-YOLO-Tools\train_data\0909\images'),
+        (r'D:\202509宁晋环境\0909\33', r'D:\yolo\XY-YOLO-Tools\train_data\0909\images'),
     ]
     for idx, (folder, out_folder) in enumerate(task_pairs, 1):
         print(f"\n{'='*60}")
