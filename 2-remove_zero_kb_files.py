@@ -6,8 +6,18 @@ import shutil
 # 再下一步标注上红框。
 
 # 定义基础文件夹路径
-# base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\0907'
-base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\YIHEDUI\90621'
+# base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\0904'
+# base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\0906'
+base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\0907'
+# base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\0908'
+# base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\0909'
+
+# base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\YIHEDUI\0904'
+# base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\YIHEDUI\0906'
+# base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\YIHEDUI\0907'
+# base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\YIHEDUI\0908'
+# base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\YIHEDUI\0909'
+
 labels_dir = os.path.join(base_dir, 'labels')
 images_dir = os.path.join(base_dir, 'images')
 unchecked_dir = os.path.join(base_dir, '未检出')

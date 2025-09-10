@@ -451,7 +451,7 @@ def process_images_from_csv(csv_file, image_folder, opt_file=None, progress_call
                 log(f"  原文件名: {image_name} -> 新文件名: {new_filename}")
 
             # 只写有的EXIF字段
-            from batch_add_gps_info import set_gps_location
+            from add_gps_info import set_gps_location
             if set_gps_location(image_path, latitude, longitude, altitude, roll, pitch, yaw, timestamp, opt_file, output_path):
                 success_count += 1
                 log(f"  ✓ 成功 (已保存至: {new_filename})" if output_path else "  ✓ 成功")
