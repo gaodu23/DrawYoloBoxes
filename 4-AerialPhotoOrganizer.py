@@ -13,7 +13,7 @@ AerialPhotoOrganizer - 航片自动分类工具
 """
 
 # 默认配置
-DEFAULT_SOURCE_DIR = r"E:\TTTT"  # 默认源文件夹路径
+DEFAULT_SOURCE_DIR = r"E:\0907\output_with_boxes"  # 默认源文件夹路径
 DEFAULT_ADD_WATERMARK = False  # 默认是否添加水印
 DEFAULT_GENERATE_CSV = True   # 默认是否生成CSV报告
 DEFAULT_GENERATE_KML = True   # 默认是否生成KML报告
@@ -358,8 +358,8 @@ def parse_kml_nested(kml_path):
         if not district_name:
             district_name = "未知县"
             print("使用默认县市级: 未知县")
-        else:
-            print(f"发现县市级: {district_name}")
+        # else:
+            # print(f"发现县市级: {district_name}")
 
         district_region = AdministrativeRegion(district_name, 3)
         regions_by_level[3].append(district_region)
@@ -384,7 +384,7 @@ def parse_kml_nested(kml_path):
             town_region.parent = district_region
             district_region.children.append(town_region)
             regions_by_level[2].append(town_region)
-            print(f"发现乡镇级: {town_name} (属于 {district_name})")
+            # print(f"发现乡镇级: {town_name} (属于 {district_name})")
 
             # 处理村 (Placemark)
             for pm in folder:
@@ -414,7 +414,7 @@ def parse_kml_nested(kml_path):
                         village_region.polygon = Polygon(coords)
                 regions_by_level[1].append(village_region)
                 village_count += 1
-                print(f"发现村庄级: {village_name} (属于 {town_name})")
+                # print(f"发现村庄级: {village_name} (属于 {town_name})")
 
         print(f"解析完成! 共发现 {len(regions_by_level[3])} 个县市, {len(regions_by_level[2])} 个乡镇, {len(regions_by_level[1])} 个村庄")
         return regions_by_level

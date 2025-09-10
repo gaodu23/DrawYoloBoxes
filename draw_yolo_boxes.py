@@ -15,6 +15,14 @@ from pathlib import Path
 import argparse
 import piexif
 
+# 添加PIL库导入
+try:
+    from PIL import Image
+    _PIL_AVAILABLE = True
+except ImportError:
+    print("警告: PIL/Pillow库未安装，某些EXIF功能可能受限。请安装: pip install pillow")
+    _PIL_AVAILABLE = False
+
 
 def get_exif_data(image_path):
     """
@@ -27,12 +35,20 @@ def get_exif_data(image_path):
         bytes: EXIF数据
     """
     try:
-        # 使用PIL读取EXIF数据
-        img = Image.open(image_path)
-        if 'exif' in img.info:
-            return img.info['exif']
+        # 优先使用piexif直接获取EXIF数据
+        try:
+            exif_dict = piexif.load(image_path)
+            exif_bytes = piexif.dump(exif_dict)
+            return exif_bytes
+        except Exception as e:
+            # 如果piexif失败，尝试使用PIL
+            if _PIL_AVAILABLE:
+                # 使用PIL读取EXIF数据
+                img = Image.open(image_path)
+                if 'exif' in img.info:
+                    return img.info['exif']
         
-        # 如果没有EXIF数据，尝试使用piexif创建一个空的EXIF字典
+        # 如果没有EXIF数据或读取失败，创建一个空的EXIF字典
         exif_dict = {"0th": {}, "Exif": {}, "GPS": {}, "1st": {}, "thumbnail": None}
         return piexif.dump(exif_dict)
     except Exception as e:
@@ -53,18 +69,8 @@ def get_gps_info(image_path):
         tuple: (经度, 纬度, 海拔) 或者 (None, None, None)
     """
     try:
-        # 打开图片
-        img = Image.open(image_path)
-        
-        # 如果没有EXIF信息，返回None
-        if 'exif' not in img.info:
-            return None, None, None
-        
-        # 获取EXIF数据
-        exif_data = img.getexif()
-        
-        # 解析EXIF信息为字典
-        exif_dict = piexif.load(img.info['exif'])
+        # 直接使用piexif读取EXIF信息
+        exif_dict = piexif.load(image_path)
         
         # 检查是否有GPS信息
         if 'GPS' not in exif_dict or not exif_dict['GPS']:
@@ -145,14 +151,19 @@ def save_image_with_exif(image, output_path, exif_data=None):
             print(f"保存图片失败: {output_path}")
             return False
             
-        # 如果有EXIF数据，则使用PIL重新打开并保存图片以保留EXIF
+        # 如果有EXIF数据，则尝试添加EXIF信息
         if exif_data:
             try:
-                # 用PIL打开图片
-                pil_img = Image.open(output_path)
-                # 保存图片并添加EXIF数据
-                pil_img.save(output_path, exif=exif_data)
-                print(f"已保存带EXIF信息的标注图片: {output_path}")
+                if _PIL_AVAILABLE:
+                    # 用PIL打开图片
+                    pil_img = Image.open(output_path)
+                    # 保存图片并添加EXIF数据
+                    pil_img.save(output_path, exif=exif_data)
+                    print(f"已保存带EXIF信息的标注图片: {output_path}")
+                else:
+                    # 如果PIL不可用，尝试直接使用piexif写入EXIF
+                    piexif.insert(exif_data, output_path)
+                    print(f"已保存带EXIF信息的标注图片: {output_path}")
             except Exception as e:
                 print(f"保存EXIF信息失败: {e}")
                 # 虽然EXIF保存失败，但图片已保存成功
