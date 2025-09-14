@@ -13,7 +13,7 @@ AerialPhotoOrganizer - 航片自动分类工具
 """
 
 # 默认配置
-DEFAULT_SOURCE_DIR = r"E:\0907\output_with_boxes"  # 默认源文件夹路径
+DEFAULT_SOURCE_DIR = r"D:\yolo\XY-YOLO-Tools\train_data\YIHEDUI\0906\images"  # 默认源文件夹路径
 DEFAULT_ADD_WATERMARK = False  # 默认是否添加水印
 DEFAULT_GENERATE_CSV = True   # 默认是否生成CSV报告
 DEFAULT_GENERATE_KML = True   # 默认是否生成KML报告

@@ -267,7 +267,7 @@ def yolo_to_bbox(yolo_coords, img_width, img_height):
     return x1, y1, x2, y2
 
 
-def draw_boxes_on_image(image_path, label_path, classes_file=None, output_path=None, box_color=(0, 0, 255), box_thickness=5):
+def draw_boxes_on_image(image_path, label_path, classes_file=None, output_path=None, box_color=(0, 0, 255), box_thickness=8):
     """
     在图片上绘制边界框
     
@@ -336,8 +336,8 @@ def draw_boxes_on_image(image_path, label_path, classes_file=None, output_path=N
         
         # 计算文本背景框的大小
         font = cv2.FONT_HERSHEY_SIMPLEX
-        font_scale = 5
-        text_thickness = 5
+        font_scale = 3
+        text_thickness = 3
         (text_width, text_height), _ = cv2.getTextSize(label_text, font, font_scale, text_thickness)
         
         # 绘制文本背景（半透明黑色）

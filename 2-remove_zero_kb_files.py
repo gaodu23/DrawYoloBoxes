@@ -8,13 +8,13 @@ import shutil
 # 定义基础文件夹路径
 # base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\0904'
 # base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\0906'
-base_dir = r'E:\0907'
+# base_dir = r'D:\yolo\XY-YOLO-Tools\train_data\YIHEDUI\0908'
 # base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\0908'
 # base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\0909'
 
 # base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\YIHEDUI\0904'
-# base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\YIHEDUI\0906'
-# base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\YIHEDUI\0907'
+base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\YIHEDUI\90431'
+# base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\YIHEDUI\90634'
 # base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\YIHEDUI\0908'
 # base_dir = r'd:\yolo\XY-YOLO-Tools\train_data\YIHEDUI\0909'
 
